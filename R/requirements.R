@@ -5,7 +5,13 @@ if (!requireNamespace("librarian")) install.packages("librarian", quiet = TRUE)
 
 requirements <- c(
   "DataS-DHSC/DHSClogger",
-  "yaml"
+  "yaml",
+  "readr",
+  "httr2",
+  "purrr",
+  "dplyr",
+  "ggplot2",
+  "afcharts"
 )
 
 # use suppress to prevent build warnings

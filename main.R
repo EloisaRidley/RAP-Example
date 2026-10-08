@@ -1,8 +1,6 @@
-
-
 # Install dependencies ----------------------------------------------------
 source(file.path("R", "requirements.R"))
-
+source(file.path("R", "run_analysis.R"))
 
 # Read secrets ------------------------------------------------------------
 if (file.exists(".Renviron")) readRenviron(".Renviron")
@@ -20,17 +18,15 @@ logger <- DHSClogger::get_dhsc_logger()
 logger$set_threshold("log.console", "INFO")
 
 
-# Run code ----------------------------------------------------------------
+# Run analysis ------------------------------------------------------------
 logger$info("[Running...]")
-
-print("Hello world!")
-
-logger$info("[...Finished]")
-
+run_analysis(config)
 
 # Save config -------------------------------------------------------------
 file.copy(
   config_path,
-  file.path("output", sprintf("%s_config.yaml", config["time_stamp"])),
+  file.path(config$output_dir, sprintf("%s_config.yaml", config["time_stamp"])),
   overwrite = TRUE
 )
+
+logger$info("[...Finished]")
