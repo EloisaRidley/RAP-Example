@@ -19,4 +19,28 @@ run_analysis <- function(config) {
     write_output(
       file.path(config$output_dir, sprintf("%s.csv", config$data_id))
     )
+
+  data_time_series <- raw_data |>
+    transform_data(config$industry, config$growth_rate)
+
+  data_time_series |>
+    write_output(file.path(config$output_dir, config$data_file_name))
+
+  plt <- data_time_series |>
+    plot_timeseries_chart(
+      config$chart_title,
+      config$highlight_geography,
+      config$chart_duration
+    )
+
+  plt |>
+    save_timeseries_chart(
+      file.path(config$output_dir, sprintf("%s.png", config$chart_file_name))
+    ) |>
+    save_timeseries_chart(
+      file.path(config$output_dir, sprintf("%s.svg", config$chart_file_name))
+    )
+
+  print(plt)
+
 }
