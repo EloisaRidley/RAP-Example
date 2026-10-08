@@ -14,6 +14,8 @@ config <- yaml::read_yaml(config_path)
 
 config["time_stamp"] <- format(Sys.Date(), "%Y%m%d")
 
+# print the config file details
+print(config)
 
 # Setup logging -----------------------------------------------------------
 logger <- DHSClogger::get_dhsc_logger()
@@ -23,7 +25,8 @@ logger$set_threshold("log.console", "INFO")
 # Run code ----------------------------------------------------------------
 logger$info("[Running...]")
 
-print("Hello world!")
+source(file.path("R", "ons_api_data.R"))
+source(file.path("R", "write_output.R"))
 
 logger$info("[...Finished]")
 
