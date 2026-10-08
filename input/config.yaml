@@ -1,2 +1,16 @@
 # see https://cran.r-project.org/web/packages/ymlthis/vignettes/yaml-overview.html
 # for details of writing yaml files
+input_dir: "input"
+output_dir: "output"
+
+data_catalogue_url: "https://api.beta.ons.gov.uk/v1/datasets"
+data_id: "regional-gdp-by-year"
+
+industry: "Q: Human health and social work activities"
+growth_rate: "Annual growth rate"
+data_file_name: "health_gdp_time_series.csv"
+
+highlight_geography: "England"
+chart_title: "Annual growth rate of Human health and social work activities"
+chart_duration: 8
+chart_file_name: "health_gdp_chart"
